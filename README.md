@@ -40,3 +40,13 @@ Then in Expo:
 - Plant identification is mocked for MVP and should be replaced with a real model/API.
 - Notification actions are configured through Expo Notifications category actions.
 - This repository intentionally avoids committed binary assets (icons/splash images) to keep PR diffs text-only in environments that reject binary files.
+
+## Project structure
+
+- `App.js`: lightweight app shell and tab routing only.
+- `src/hooks/usePlantyApp.js`: app state and business logic orchestration.
+- `src/components/tabs/*`: screen-level UI components (garden, journal, guides, wishlist).
+- `src/services/*`: integrations (storage, notifications, image picker, species identifier).
+- `src/utils/*`: pure helper logic (date and watering model).
+- `src/constants/*`: static config and guide content.
+- `src/styles/theme.js`: centralized styling.
