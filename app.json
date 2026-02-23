@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "Planty",
+    "slug": "planty",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.example.planty",
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "Allow Planty to choose plant photos for your journal.",
+        "NSUserNotificationUsageDescription": "Allow Planty reminders for watering your plants."
+      }
+    },
+    "android": {
+      "package": "com.example.planty",
+      "permissions": ["POST_NOTIFICATIONS"]
+    }
+  }
+}
