@@ -70,15 +70,24 @@ export function usePlantyApp() {
     if (image) setForm((prev) => ({ ...prev, image }));
   }
 
-  function identifySpecies() {
+  async function identifySpecies() {
     if (!form.image) {
       Alert.alert('Add photo first', 'Pick an image so Planty can identify likely species.');
       return;
     }
 
-    const guess = identifyPlantFromImage();
-    setForm((prev) => ({ ...prev, species: guess }));
-    Alert.alert('Plant identified', `Likely ${guess} (mock AI for MVP).`);
+    try {
+      const result = await identifyPlantFromImage(form.image);
+      setForm((prev) => ({ ...prev, species: result.name }));
+
+      const confidencePct = Math.round((result.confidence || 0) * 100);
+      Alert.alert(
+        'Plant identified',
+        `Likely ${result.name} (${confidencePct}% confidence, source: ${result.source}).`,
+      );
+    } catch (error) {
+      Alert.alert('Identification failed', 'Could not identify this plant right now. Please try again.');
+    }
   }
 
   async function addPlant() {
